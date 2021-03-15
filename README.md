@@ -31,7 +31,7 @@ conda install --file requirements.txt
 ```
 
 ## Datasets
-All datasets are included except following: 
+All datasets are included except following requried for dsda (chapter 4): 
 ### Office-31
 Office-31 dataset can be found [here](https://drive.google.com/file/d/11nywfWdfdBi92Lr3y4ga2Cu4_-FpWKUC/view?usp=sharing).
 
@@ -40,6 +40,13 @@ Office-Home dataset can be found [here](https://drive.google.com/file/d/1W_U8GsI
 
 ### Image-clef
 Image-Clef dataset can be found [here](https://drive.google.com/file/d/1lu1ouDoeucW8MgmaKVATwNt5JT7Uvk62/view?usp=sharing).
+
+To use the datasets change the paths accorindgly to your data destination in the files:  
+        
+        ├── dsda                    # Code for chapter 4: Deep Spectral Domain Adaptation
+        │   ├── data                # Files with data paths.
+
+
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
