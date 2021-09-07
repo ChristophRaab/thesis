@@ -3,15 +3,15 @@ import copy
 import numpy as np
 from PIL import Image
 import matplotlib.cm as mpl_color_map
-import sys
-from deepview import DeepView
+import sys,os
+sys.path.append(os.path.abspath(__file__ + "/../../"))
 import torch
-from dda.adversarial.asan.data_list import ImageList
+from dsda.data_list import ImageList
 from torch.autograd import Variable
 from torchvision import models
 import matplotlib.pyplot as plt
 from torch.utils.data import DataLoader
-import dda.adversarial.asan.pre_process as prep
+from dsda import pre_process as prep
 from torch import nn
 from sklearn.manifold import TSNE
 from sklearn.metrics.pairwise import cosine_similarity
@@ -133,37 +133,6 @@ def plot_spectra(source,target):
     plt.savefig("plots/"+name+"_plot_both_spectra.png")
     plt.savefig("plots/"+name+"_plot_both_spectra.pdf",dpi=400)
 
-
-def plot_deep_view(data,labels,classes,model):
-    # --- Deep View Parameters ----
-    def pred_wrapper(x):
-        with torch.no_grad():
-            x = np.array(x, dtype=np.float32)
-            tensor = torch.from_numpy(x)
-            _,preds = model(tensor)
-            probabilities = torch.nn.Softmax(dim=-1)(preds).detach().cpu().numpy()
-        return probabilities
-
-
-    data_shape = data.shape[1:]
-    batch_size = 32
-    max_samples = 100
-    resolution = 100
-    N = 10
-    lam = 0.64
-    data_samples = 200
-    cmap = 'tab10'
-    # to make shure deepview.show is blocking,
-    # disable interactive mode
-    interactive = False
-    title = 'Forest - MNIST'
-    with torch.no_grad():
-        deepview = DeepView(pred_wrapper, classes, max_samples, batch_size, data_shape,
-            N, lam, resolution, cmap, interactive, title)
-
-        deepview.add_samples(data[:data_samples], labels[:data_samples])
-        deepview.show()
-
 if __name__ == '__main__':
     # base_models = ["snapshot/san/AW_Trained_Models/_ASAN+E_on_amazon_vs_webcam.pth.tar","snapshot/san/AW_Trained_Models/_CDAN_on_amazon_vs_webcam.pth.tar","snapshot/san/AW_Trained_Models/_DANN_on_amazon_vs_webcam.pth.tar"]
     # ad_nets = ["snapshot/san/AW_Trained_Models/_ASAN+E_ad_net_on_amazon_vs_webcam.pth.tar","snapshot/san/AW_Trained_Models/_CDAN_ad_net_on_amazon_vs_webcam.pth.tar","snapshot/san/AW_Trained_Models/_DANN_ad_net_on_amazon_vs_webcam.pth.tar"]
@@ -259,7 +228,7 @@ if __name__ == '__main__':
                 domain_predictions = np.vstack([domain_predictions, d_pred.cpu().detach().numpy()]) if domain_predictions.size else d_pred.cpu().detach().numpy()
 
                 bottleneck_features = np.vstack([bottleneck_features, features.cpu().detach().numpy()]) if bottleneck_features.size else features.cpu().detach().numpy()
-                plot_deep_view(inputs,truth_labels,classes,pretrained_model)
+               
         # plot tsne
         source_size = len(np.array([[1]] * (config["data"]["source"]["batch_size"] *len(dset_loaders["source"]))))
         target_size = len(np.array([[0]] *(config["data"]["target"]["batch_size"] *  len(dset_loaders["target"]))))

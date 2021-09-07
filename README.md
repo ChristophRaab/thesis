@@ -3,18 +3,19 @@ This repository contains the source code and the final pdf for the dissertation 
 Standard language is python and mentioned otherwise.
 The folder structure roughly represents the chapters of the thesis:
 
-    ├── sda                     # Code for chapter 2 & 3: Geometric and Subspace Domain Adaptation    
+    ├── sda                     # Code for chapter 3 & 4: Geometric and Subspace Domain Adaptation    
     │   ├── gda.py              # Python Demo for Geometric Domain Adaptation
     │   ├── so.py               # Python Demo for Subspace Override Algorithm
     │   ├── nso.py              # Python Demo for Nyström SO
     │   ├── matlab              # Matlab Code 
     │   │   ├── study_all.m     # Reproduces all performance experiments (takes a while!)   
     │   │   ├── study_<name>.m  # Reproduces performance experiments on dataset <name>   
-    ├── dsda                    # Code for chapter 4: Deep Spectral Domain Adaptation
-    │   ├── train_image.py      # Demo for Adversarial Spectral Adaptation Network
-    │   ├── train_image.py      # Demo for Deep Spectral Network
-    │   ├── study.py            # Reproduces performance experiments on selected dataset (takes a while!)   
-    ├── rrslvq                  # Code for chapter 5: Non-Stationary Online Prototype Learning
+    ├── dsda                    # Code for chapter 5: Deep Spectral Domain Adaptation
+    │   ├── train_asan.py       # Demo for Adversarial Spectral Adaptation Network
+    │   ├── train_dsn.py        # Demo for Deep Spectral Network
+    │   ├── study_asan.py       # Reproduces ASAN performance experiments on selected dataset (takes a while!)   
+    │   ├── study_dsn.py        # Reproduces DSN performance experiments on selected dataset (takes a while!)   
+    ├── rrslvq                  # Code for chapter 6: Non-Stationary Online Prototype Learning
     │   ├── demo.py             # Demo for Reactive Robust Soft Learning Vector Quantization (RRSLVQ)
     │   ├── study               # Folder of study scripts
     └── └── └── study_<type>.m  # Reproduces experiments of type <type>   
@@ -33,7 +34,7 @@ pip install -r pip_requirements.txt # If conda requirements fail
 ```
 
 ## Datasets
-All datasets are included except following requried for dsda (chapter 4). To download and install all datasets for chapter 4 run:
+All datasets are included except following requried for DSDA (chapter 5). To download and install all datasets for chapter 4 run:
 ```bash
 python download_datasets.py --path # your path - default: dsda/datasets/
 ```

@@ -1,18 +1,19 @@
 
 from __future__ import division
+import sys,os
+sys.path.append(os.path.abspath(__file__ + "/../../../"))
 from joblib import Parallel, delayed
-from skmultiflow.prototype import robust_soft_learning_vector_quantization as RSLVQ
+from skmultiflow.prototype.robust_soft_learning_vector_quantization import RobustSoftLearningVectorQuantization as RSLVQ
 from skmultiflow.data.mixed_generator import MIXEDGenerator
 from skmultiflow.evaluation.evaluate_prequential import EvaluatePrequential
 from skmultiflow.lazy import KNN
 from skmultiflow.meta.oza_bagging_adwin import OzaBaggingAdwin
-from streaming.rrslvq.rrslvq import ReactiveRobustSoftLearningVectorQuantization as RRSLVQ
-from streaming.utils.reoccuring_drift_stream import ReoccuringDriftStream
-from bix.classifiers.rrslvq import RRSLVQ
+from rrslvq.rrslvq_cls import ReactiveRobustSoftLearningVectorQuantization as RRSLVQ
+from rrslvq.utils.reoccuring_drift_stream import ReoccuringDriftStream
 from skmultiflow.trees.hoeffding_adaptive_tree import HAT
 from skmultiflow.lazy.sam_knn import SAMKNN
 from skmultiflow.meta.adaptive_random_forests import AdaptiveRandomForest
-from streaming.utils.study import Study
+from rrslvq.utils.study import Study
 from skmultiflow.data.concept_drift_stream import ConceptDriftStream
 from skmultiflow.data.sea_generator import SEAGenerator
 
@@ -41,36 +42,10 @@ def evaluate(stream,metrics,study_size):
     evaluator.evaluate(stream=stream, model=clfs, model_names=names)
 
 s = Study()
-parallel =2
+parallel =-2
 study_size = 100000 
 metrics = ['accuracy','running_time']
 
-s1 = MIXEDGenerator(classification_function = 1, random_state= 112, balance_classes = False)
-s2 = MIXEDGenerator(classification_function = 0, random_state= 112, balance_classes = False)
-mixed_ra = ReoccuringDriftStream(stream=s1, drift_stream=s2,random_state=None,alpha=90.0, position=2000,width=100,pause = 1000)
-mixed_a = ConceptDriftStream(stream=s1,
-                           drift_stream=s2,
-                           alpha=90.0,
-                           random_state=None,
-                           position=int(study_size/2),
-                           width=1)
-sea_a = ConceptDriftStream(stream=SEAGenerator(random_state=112, noise_percentage=0.1),
-                           drift_stream=SEAGenerator(random_state=112,
-                                                     classification_function=2, noise_percentage=0.1),
-                           alpha=90.0,
-                           random_state=None,
-                           position=int(study_size/2),
-                           width=1)
-
-sea_ra = ReoccuringDriftStream(stream=SEAGenerator(random_state=112, noise_percentage=0.1),
-                              drift_stream=SEAGenerator(random_state=112,
-                                                        classification_function=2, noise_percentage=0.1),
-                              alpha=90.0,
-                              random_state=None,
-                              position=2000,
-                              width=1)
-
-streams = s.init_standard_streams()  + s.init_reoccuring_standard_streams()
-streams = [mixed_a,mixed_ra]
+streams = s.init_standard_streams()  + s.init_reoccuring_standard_streams() + s.init_real_world()
 
 Parallel(n_jobs=parallel,max_nbytes=None)(delayed(evaluate)(stream,metrics,study_size) for stream in streams)

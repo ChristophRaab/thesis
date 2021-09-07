@@ -1,7 +1,6 @@
-import sys
-sys.path.append("../../../transfer_learning/")
-sys.path.append("../transfer_learning/")
-from streaming.rrslvq.eddm import EDDM
+import sys,os
+sys.path.append(os.path.abspath(__file__ + "/../../"))
+from rrslvq.eddm import EDDM
 
 from sklearn.base import BaseEstimator, ClassifierMixin
 from skmultiflow.bayes.naive_bayes import NaiveBayes

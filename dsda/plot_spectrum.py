@@ -4,12 +4,13 @@ import numpy as np
 from PIL import Image
 import matplotlib.cm as mpl_color_map
 import sys
-sys.path.append("home/bix/Christoph/owncloud/transfer_learning")
+import sys,os
+sys.path.append(os.path.abspath(__file__ + "/../../"))
 import torch
 from torch.autograd import Variable
 from torchvision import models
 import matplotlib.pyplot as plt
-from dda.adversarial.asan.misc_functions import get_domain_adaptation_images,load_adapted_resnet_features,predict_test_images,preprocess_example_image
+from dsda.misc_functions import get_domain_adaptation_images,load_adapted_resnet_features,predict_test_images,preprocess_example_image
 
 
 def plot_eigenspectrum(x):

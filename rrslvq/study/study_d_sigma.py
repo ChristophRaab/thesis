@@ -1,7 +1,8 @@
 from __future__ import division
 
-
-from streaming.utils.reoccuring_drift_stream import ReoccuringDriftStream
+import sys,os
+sys.path.append(os.path.abspath(__file__ + "/../../../"))
+from rrslvq.utils.reoccuring_drift_stream import ReoccuringDriftStream
 import matplotlib.pyplot as plt
 
 from skmultiflow.data.mixed_generator import MIXEDGenerator

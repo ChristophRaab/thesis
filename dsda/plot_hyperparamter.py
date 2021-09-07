@@ -1,5 +1,6 @@
 
-
+import sys,os
+sys.path.append(os.path.abspath(__file__ + "/../../"))
 import pandas as pd
 import numpy as np
 import glob

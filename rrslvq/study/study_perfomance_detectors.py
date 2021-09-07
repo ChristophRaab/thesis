@@ -1,12 +1,11 @@
 import pandas as pd
 import numpy as np
 from sklearn.metrics import confusion_matrix
-import sys
-sys.path.append("../../../../transfer_learning/")
-sys.path.append("../transfer_learning/")
-from streaming.rrslvq.eddm import EDDM
-from streaming.rrslvq.cd_naive_bayes import cdnb
-from streaming.utils.study import Study
+import sys,os
+sys.path.append(os.path.abspath(__file__ + "/../../../"))
+from rrslvq.eddm import EDDM
+from rrslvq.cd_naive_bayes import cdnb
+from rrslvq.utils.study import Study
 import seaborn as sns
 import matplotlib.pyplot as plt
 import os

@@ -4,9 +4,10 @@ import math
 import sys
 from random import randint
 from random import random as rnd
-sys.path.append("C:/Users/chris/Documents/ownCloud/transfer_learning/")
+import sys,os
+sys.path.append(os.path.abspath(__file__ + "/../../"))
 
-from streaming.utils.reoccuring_drift_stream import ReoccuringDriftStream
+from rrslvq.utils.reoccuring_drift_stream import ReoccuringDriftStream
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -26,7 +27,7 @@ from skmultiflow.data.mixed_generator import MIXEDGenerator
 #Abrupt Concept Drift Generators
 from skmultiflow.drift_detection.adwin import ADWIN
 from skmultiflow.evaluation.evaluate_prequential import EvaluatePrequential
-from streaming.rrslvq.rrslvq import ReactiveRobustSoftLearningVectorQuantization as RRSLVQ
+from rrslvq.rrslvq_cls import ReactiveRobustSoftLearningVectorQuantization as RRSLVQ
 
 
 
