@@ -40,6 +40,7 @@ To download and install all datasets for chapter 4 run:
 python download_datasets.py --path # your path - default: dsda/datasets/
 ```
 
+Otherwise they can be downloaded:
 ### Office-31
 Office-31 dataset can be found [here](https://drive.google.com/file/d/11nywfWdfdBi92Lr3y4ga2Cu4_-FpWKUC/view?usp=sharing).
 
