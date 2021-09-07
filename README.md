@@ -53,8 +53,8 @@ Image-Clef dataset can be found [here](https://drive.google.com/file/d/1lu1ouDoe
 To use the datasets change the paths accorindgly to your data destination in the files:  
         
         ├── dsda                    # Code for chapter 4: Deep Spectral Domain Adaptation
-        │   ├── data                # Files with data paths.
-
+        │   ├── data                # Files with data paths required for ASAN code.
+        │   ├── dataset             # Domain Adaptation dataset
 
 
 ## License
