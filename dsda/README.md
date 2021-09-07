@@ -1,25 +1,13 @@
-# CDAN implemneted in PyTorch
-
+# Source Code for Chapter 5
+ 
 ## Prerequisites
-- PyTorch >= 0.4.0 (with suitable CUDA and CuDNN version)
-- torchvision >= 0.2.1
-- Python3
-- Numpy
-- argparse
-- PIL
+Use conda and pip to install requirements
 
-## Training
+## Deep Spectral Network (DSN)  
+
+## Adversarial Spectral Adaptation Networks (ASAN)
 All the parameters are set to optimal in our experiments. The following are the command for each task. The test_interval can be changed, which is the number of iterations between near test.
-```
-SVHN->MNIST
-python train_svhnmnist.py --gpu_id id --epochs 50
 
-USPS->MNIST
-python train_uspsmnist.py --gpu_id id --epochs 50 --task USPS2MNIST
-
-MNIST->USPS
-python train_uspsmnist.py --gpu_id id --epochs 50 --task MNIST2USPS
-```
 ```
 Office-31
 
@@ -42,7 +30,3 @@ Image-clef
 pythonn train_image.py --gpu_id id --net ResNet50 --dset image-clef --test_interval 500 --s_dset_path ../data/image-clef/b_list.txt --t_dset_path ../data/image-clef/i_list.txt
 ```
 
-If you want to run the random version of CDAN, add `--random` as a parameter.
-
-## Note
-- The alexnet version for PyTorch is under development. We plan to use alexnet [here](https://github.com/jiecaoyu/pytorch_imagenet)
