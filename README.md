@@ -22,7 +22,7 @@ The folder structure roughly represents the chapters of the thesis:
 Remaining files are self-explaining algorithms, utils, plot methods etc.
 
 ## Installation
-Use the requirements.txt to install dependencies. 
+Use the requirements.txt and pip_requirements.txt to install dependencies. 
 The recommended enviroment is conda in combindation with pip. 
 
 ```bash
@@ -34,12 +34,6 @@ pip install -r pip_requirements.txt # If conda requirements fail
 
 ## Datasets
 All datasets are included except following requried for dsda (chapter 4): 
-
-### Reuters 
-
-### Newsgroup
-
-### Office-Caltech
 
 ### Office-31
 Office-31 dataset can be found [here](https://drive.google.com/file/d/11nywfWdfdBi92Lr3y4ga2Cu4_-FpWKUC/view?usp=sharing).
