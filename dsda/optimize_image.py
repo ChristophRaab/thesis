@@ -1,28 +1,28 @@
 import argparse
-import os
 import os.path as osp
-import sys
 import numpy as np
 import torch
+import sys,os
+sys.path.append(os.path.abspath(__file__ + "/../../"))
 import torch.nn as nn
 import torch.optim as optim
-import dda.adversarial.asan.network
-import dda.adversarial.asan.loss
-import dda.adversarial.asan.pre_process as prep
+from dsda import network
+from dsda import loss
+from dsda import pre_process as prep
 from torch.utils.data import DataLoader
 import lr_schedule
 import data_list
 import itertools
-from dda.adversarial.asan.data_list import ImageList
+from dsda.data_list import ImageList
 from torch.autograd import Variable
 import random
 import pdb
 import math
 import pandas as pd
 import re
-from dda.adversarial.asan.train_image import train,make_config
-from dda.adversarial.asan.study import office31,office_home,image_clef,oh,ic,o31
-from dda.adversarial.asan.study import do_study,study_iteration
+from dsda.study_asan import study_iteration
+from dsda.train_asan import train,make_config
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Conditional Domain Adversarial Network')
     parser.add_argument('--method', type=str, default='CDAN+E', choices=['CDAN', 'CDAN+E', 'DANN'])

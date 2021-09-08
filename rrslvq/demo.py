@@ -1,10 +1,11 @@
 # This demo file compares the OzaBagginAdwin algorithms with the ReactiveRobustSoftLearningVectorQuantization
 # on Mixed Generator with high rates of drift.
-
+import sys,os
+sys.path.append(os.path.abspath(__file__ + "/../../"))
 
 from skmultiflow.data import MIXEDGenerator
-from streaming.utils.reoccuring_drift_stream  import ReoccuringDriftStream
-from streaming.rrslvq.rrslvq import ReactiveRobustSoftLearningVectorQuantization
+from rrslvq.utils.reoccuring_drift_stream  import ReoccuringDriftStream
+from rrslvq.rrslvq_cls import ReactiveRobustSoftLearningVectorQuantization
 from skmultiflow.meta import OzaBaggingAdwin
 from skmultiflow.lazy import KNN
 from skmultiflow.evaluation import EvaluatePrequential

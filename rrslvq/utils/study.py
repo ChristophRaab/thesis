@@ -1,7 +1,7 @@
-import os
 import datetime
-
-from streaming.utils.reoccuring_drift_stream import ReoccuringDriftStream 
+import sys,os
+sys.path.append(os.path.abspath(__file__ + "/../../../"))
+from rrslvq.utils.reoccuring_drift_stream import ReoccuringDriftStream 
 from skmultiflow.data.concept_drift_stream import ConceptDriftStream
 from skmultiflow.data.file_stream import FileStream
 #Abrupt Concept Drift Generators
@@ -237,9 +237,9 @@ class Study():
 
         """Initialize real world data streams, will be loaded from file"""
 
-        if not os.path.join("..", "..", "datasets"):
+        if not os.path.join("..", "datasets"):
             raise FileNotFoundError("Folder for data cannot be found! Should be datasets")
-        os.chdir(os.path.join("..", "..", "datasets"))
+        os.chdir(os.path.join("..", "datasets"))
         try:
             covertype = FileStream(os.path.realpath('covtype.csv'))  # Label failure
             covertype.name = "covertype"
@@ -262,9 +262,9 @@ class Study():
     def init_real_world(self):
         """Initialize real world data streams, will be loaded from file"""
     
-        if not os.path.join("..","..","datasets"):
+        if not os.path.join("..","dataset"):
             raise FileNotFoundError("Folder for data cannot be found! Should be datasets")
-        os.chdir(os.path.join("..","..","datasets"))
+        os.chdir(os.path.join("..","dataset"))
         try:   
             covertype = FileStream(os.path.realpath('covtype.csv')) # Label failure
             covertype.name = "covertype"

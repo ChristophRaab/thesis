@@ -5,14 +5,15 @@ import numpy as np
 from PIL import Image
 import matplotlib.cm as mpl_color_map
 import sys
-sys.path.append("home/bix/Christoph/owncloud/transfer_learning")
+import sys,os
+sys.path.append(os.path.abspath(__file__ + "/../../"))
 import torch
-from dda.adversarial.asan.data_list import ImageList
+from dsda.data_list import ImageList
 from torch.autograd import Variable
 from torchvision import models
 import matplotlib.pyplot as plt
 from torch.utils.data import DataLoader
-import dda.adversarial.asan.pre_process as prep
+from dsda import pre_process as prep
 from torch import nn
 from sklearn.manifold import TSNE
 from scipy.interpolate import UnivariateSpline,InterpolatedUnivariateSpline

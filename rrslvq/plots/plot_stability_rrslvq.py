@@ -1,9 +1,9 @@
 from cd_naive_bayes import cdnb
 from skmultiflow.data.mixed_generator import MIXEDGenerator
 from skmultiflow.evaluation.evaluate_prequential import EvaluatePrequential
-from streaming.utils.reoccuring_drift_stream import ReoccuringDriftStream
-from streaming.rrslvq.rrslvq import ReactiveRobustSoftLearningVectorQuantization as RRSLVQ
-from skmultiflow.prototype import robust_soft_learning_vector_quantization as RSLVQ
+from rrslvq.utils.reoccuring_drift_stream import ReoccuringDriftStream
+from rrslvq.rrslvq_cls import ReactiveRobustSoftLearningVectorQuantization as RRSLVQ
+from skmultiflow.prototype.robust_soft_learning_vector_quantization import RobustSoftLearningVectorQuantization as RSLVQ
 from skmultiflow.lazy import KNN
 from skmultiflow.meta.oza_bagging_adwin import OzaBaggingAdwin
 from skmultiflow.trees.hoeffding_adaptive_tree import HAT

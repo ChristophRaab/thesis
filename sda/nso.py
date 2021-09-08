@@ -1,5 +1,6 @@
 import numpy as np
 from sklearn import preprocessing
+
 from sklearn.neighbors import KNeighborsClassifier
 class NSO():
     """
@@ -16,14 +17,13 @@ class NSO():
     >>> import scipy.io as sio
     >>> from sklearn.svm import SVC
     >>> 
-    >>> os.chdir("../../../Database/domain_adaptation/OfficeCaltech/features/surf")
     >>> 
     >>> # Load and preprocessing of data. Note normalization to N(0,1) is necessary.
-    >>> dslr = sio.loadmat("dslr_SURF_L10.mat")
+    >>> dslr = sio.loadmat(os.path.abspath(__file__ + "/..")+"/dataset/OfficeCaltech/features/surf/dslr_SURF_L10.mat")
     >>> Xs = preprocessing.scale(np.asarray(dslr["fts"]))
     >>> Ys = np.asarray(dslr["labels"])
     >>> 
-    >>> amazon = sio.loadmat("amazon_SURF_L10.mat")
+    >>> amazon = sio.loadmat(os.path.abspath(__file__ + "/..")+"/dataset/OfficeCaltech/features/surf/amazon_SURF_L10.mat")
     >>> Xt = preprocessing.scale(np.asarray(amazon["fts"]))
     >>> Yt = np.asarray(amazon["labels"])
     >>> 
@@ -265,15 +265,12 @@ if __name__ == "__main__":
     import scipy.io as sio
     from sklearn.svm import SVC
 
-
-    os.chdir("../../../Database/domain_adaptation/OfficeCaltech/features/surf")
-
     # Load and preprocessing of data. Note normalization to N(0,1) is necessary.
-    dslr = sio.loadmat("dslr_SURF_L10.mat")
+    dslr = sio.loadmat(os.path.abspath(__file__ + "/..")+"/dataset/OfficeCaltech/features/surf/dslr_SURF_L10.mat")
     Xs = preprocessing.scale(np.asarray(dslr["fts"]))
     Ys = np.asarray(dslr["labels"])
 
-    amazon = sio.loadmat("amazon_SURF_L10.mat")
+    amazon = sio.loadmat(os.path.abspath(__file__ + "/..")+"/dataset/OfficeCaltech/features/surf/amazon_SURF_L10.mat")
     Xt = preprocessing.scale(np.asarray(amazon["fts"]))
     Yt = np.asarray(amazon["labels"])
 

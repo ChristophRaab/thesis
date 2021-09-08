@@ -1,6 +1,7 @@
-
-from streaming.utils.study import Study
-from streaming.rrslvq.rrslvq import ReactiveRobustSoftLearningVectorQuantization as RRSLVQ
+import sys,os
+sys.path.append(os.path.abspath(__file__ + "/../../../"))
+from rrslvq.utils.study import Study
+from rrslvq.rrslvq_cls import ReactiveRobustSoftLearningVectorQuantization as RRSLVQ
 import itertools
 import numpy as np
 import pandas as pd

@@ -1,6 +1,7 @@
 import numpy as np
 from sklearn import preprocessing
 from sklearn.neighbors import KNeighborsClassifier
+
 class SO():
     """
     Subspace Override Transfer Service Class
@@ -16,14 +17,14 @@ class SO():
     >>> import scipy.io as sio
     >>> from sklearn.svm import SVC
     >>> 
-    >>> os.chdir("../../../Database/domain_adaptation/OfficeCaltech/features/surf")
+    >>> os.chdir("dataset/OfficeCaltech/features/surf")
     >>> 
     >>> # Load and preprocessing of data. Note normalization to N(0,1) is necessary.
-    >>> dslr = sio.loadmat("dslr_SURF_L10.mat")
+    >>> dslr = sio.loadmat(os.path.abspath(__file__ + "/..")+"/dataset/OfficeCaltech/features/surf/dslr_SURF_L10.mat")
     >>> Xs = preprocessing.scale(np.asarray(dslr["fts"]))
     >>> Ys = np.asarray(dslr["labels"])
     >>> 
-    >>> amazon = sio.loadmat("amazon_SURF_L10.mat")
+    >>> amazon = sio.loadmat(os.path.abspath(__file__ + "/..")+"/dataset/OfficeCaltech/features/surf/amazon_SURF_L10.mat")
     >>> Xt = preprocessing.scale(np.asarray(amazon["fts"]))
     >>> Yt = np.asarray(amazon["labels"])
     >>> 
@@ -113,13 +114,17 @@ class SO():
             raise ValueError("Numpy Arrays must be given!")
         if type(self.n_landmarks ) is not int or self.n_landmarks  < 1:
             raise ValueError("Positive integer number must given!")
+        # Correct landmarks if user enters impossible value
         self.n_landmarks = int(np.min(list(Xt.shape)+list(Xs.shape)+[self.n_landmarks ]))
-    
+      
 
         L,T,_ = np.linalg.svd(Xt,compute_uv=True)
-
+        S = np.linalg.svd(Xs,compute_uv=False)
+        
         self.Xt = L[:,:self.n_landmarks] @ np.diag(T[:self.n_landmarks])
+        self.Xs = L[:,:self.n_landmarks] @ np.diag(S[:self.n_landmarks])
         self.subspace = L
+        self.Ys = Ys
         self.n_xt = Xt.shape[0]
 
     def transform(self,Xs,Ys):
@@ -147,13 +152,12 @@ class SO():
         max_idx = np.min(list(Xt.shape)+list(Xs.shape))
         idx = np.random.randint(0,max_idx-1,self.n_landmarks)
 
-        if type(Ys) is np.ndarray:
-            A = self.classwise_sampling(Xs,Ys)
-        else:
-            A = Xs[np.ix_(idx,idx)]
+
+ 
+        A = Xs[np.ix_(idx,idx)]
 
         D = np.linalg.svd(Xs,compute_uv=False)
-        Xs = self.subspace @ np.diag(D)
+        Xs = self.subspace[:,:self.n_landmarks]  @ np.diag(D[:self.n_landmarks])
         self.Ys = Ys
         return self.Xt,self.Xs,self.Ys
 
@@ -227,19 +231,19 @@ if __name__ == "__main__":
     from sklearn.svm import SVC
 
 
-    os.chdir("../../../Database/domain_adaptation/OfficeCaltech/features/surf")
+
 
     # Load and preprocessing of data. Note normalization to N(0,1) is necessary.
-    dslr = sio.loadmat("dslr_SURF_L10.mat")
+    dslr = sio.loadmat(os.path.abspath(__file__ + "/..")+"/dataset/OfficeCaltech/features/surf/dslr_SURF_L10.mat")
     Xs = preprocessing.scale(np.asarray(dslr["fts"]))
     Ys = np.asarray(dslr["labels"])
 
-    amazon = sio.loadmat("amazon_SURF_L10.mat")
+    amazon = sio.loadmat(os.path.abspath(__file__ + "/..")+"/dataset/OfficeCaltech/features/surf/amazon_SURF_L10.mat")
     Xt = preprocessing.scale(np.asarray(amazon["fts"]))
     Yt = np.asarray(amazon["labels"])
 
     # Applying SVM without transfer learning. Accuracy should be about 10%
-    clf = SVC(gamma=1,C=10)
+    clf = SVC(gamma=1,C=10,kernel="linear")
     clf.fit(Xs,Ys)
     print("SVM without transfer "+str(clf.score(Xt,Yt.ravel())))
 
@@ -248,12 +252,8 @@ if __name__ == "__main__":
     # Compute domain invariant subspace data directly by 
     Xt,Xs,Ys = so.fit_transform(Xt,Xs,Ys)
     
-    # Or use two steps
-    # so.fit(Xt)
-    # Xt,Xs,Ys = so.transform(Xs,Ys)
-
-    clf = SVC(gamma=1,C=10)
-    clf.fit(Xs,Ys)
+    clf = SVC(gamma=1,C=10,kernel="linear")
+    clf.fit(Xs,Ys.ravel())
     print("SVM + SO: "+str(clf.score(Xt,Yt.ravel())))
 
     model = KNeighborsClassifier(n_neighbors=1)
