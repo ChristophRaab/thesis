@@ -1,14 +1,3 @@
-,EDDM
-mixed_a,0.499785
-mixed_g,0.500076
-Hyperplane Generator,0.720992
-rand_tree,0.640518
-rbf_if,0.498441
-rbf_im,0.514305
-sea_a,0.692621
-sea_g,0.652337
-Mixed Generator_Mixed Generator_1000_1,0.500004
-Mixed Generator_Mixed Generator_1000_1000,0.500004
-SEA Generator_SEA Generator_1000_1,0.728249
-SEA Generator_SEA Generator_1000_1000,0.679065
-Mean,0.59
+version https://git-lfs.github.com/spec/v1
+oid sha256:17d7f9bca5f2c46cbb1810d208b674b8d81e1eb563228bbc6afad2dc79781607
+size 365

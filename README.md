@@ -34,10 +34,7 @@ pip install -r pip_requirements.txt # If conda requirements fail
 ```
 
 ## Datasets
-All datasets are included except following requried for DSDA (chapter 5). To download and install all datasets for chapter 4 run:
-```bash
-python download_datasets.py --path # your path - default: dsda/datasets/
-```
+All datasets are included except following requried for DSDA (chapter 5). 
 
 Otherwise they can be downloaded:
 ### Office-31

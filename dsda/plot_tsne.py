@@ -5,10 +5,7 @@ from PIL import Image
 import matplotlib.cm as mpl_color_map
 import sys,os
 sys.path.append(os.path.abspath(__file__ + "/../../"))
-<<<<<<< HEAD
 os.chdir(os.path.abspath(__file__ + "/.."))
-=======
->>>>>>> 2738f905b07e16134098d0f918c2e78b3c8889b4
 import torch
 from dsda.data_list import ImageList
 from torch.autograd import Variable

@@ -1,11 +1,3 @@
-# TEST CONFIGURATION BEGIN
-# HyperplaneGenerator(mag_change=0.001, n_drift_features=2, n_features=10, noise_percentage=0.1, random_state=None, sigma_percentage=0.1)
-# [hat] HoeffdingAdaptiveTreeClassifier(binary_split=False, bootstrap_sampling=True, grace_period=200, leaf_prediction='nba', max_byte_size=33554432, memory_estimate_period=1000000, nb_threshold=0, no_preprune=False, nominal_attributes=None, random_state=None, remove_poor_atts=False, split_confidence=1e-07, split_criterion='info_gain', stop_mem_management=False, tie_threshold=0.05)
-# [rslvq] RobustSoftLearningVectorQuantization(gamma=0.9, gradient_descent='vanilla', initial_prototypes=None, prototypes_per_class=4, random_state=None, sigma=4)
-# [rrslvq] RSLVQ
-# [adf] AdaptiveRandomForestClassifier(binary_split=False, disable_weighted_vote=False, drift_detection_method=ADWIN(delta=0.001), grace_period=50, lambda_value=6, leaf_prediction='nba', max_byte_size=33554432, max_features='auto', memory_estimate_period=2000000, n_estimators=10, nb_threshold=0, no_preprune=False, nominal_attributes=None, performance_metric='acc', random_state=None, remove_poor_atts=False, split_confidence=0.01, split_criterion='info_gain', stop_mem_management=False, tie_threshold=0.05, warning_detection_method=ADWIN(delta=0.01))
-# [oza] OzaBaggingADWINClassifier(base_estimator=KNNClassifier(leaf_size=30, max_window_size=1000, metric='euclidean', n_neighbors=5), n_estimators=10, random_state=None)
-# [samknn] SAMKNNClassifier(ltm_size=0.4, max_window_size=None, min_stm_size=50, n_neighbors=5, stm_size_option='maxACCApprox', use_ltm=True, weighting='distance')
-# EvaluatePrequential(batch_size=10, data_points_for_classification=False, max_samples=100000, max_time=inf, metrics=['accuracy', 'running_time'], n_wait=200, output_file='Hyperplane Generator_time_other.csv', pretrain_size=200, restart_stream=True, show_plot=False)
-# TEST CONFIGURATION END
-id,mean_acc_[hat],current_acc_[hat],mean_acc_[rslvq],current_acc_[rslvq],mean_acc_[rrslvq],current_acc_[rrslvq],mean_acc_[adf],current_acc_[adf],mean_acc_[oza],current_acc_[oza],mean_acc_[samknn],current_acc_[samknn],training_time_[hat],testing_time_[hat],total_running_time_[hat],training_time_[rslvq],testing_time_[rslvq],total_running_time_[rslvq],training_time_[rrslvq],testing_time_[rrslvq],total_running_time_[rrslvq],training_time_[adf],testing_time_[adf],total_running_time_[adf],training_time_[oza],testing_time_[oza],total_running_time_[oza],training_time_[samknn],testing_time_[samknn],total_running_time_[samknn]
+version https://git-lfs.github.com/spec/v1
+oid sha256:26fefb6dbde625ff13ef39b583733302156f3afec3840222f66688254f072e33
+size 2534

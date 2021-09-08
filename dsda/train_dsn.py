@@ -3,10 +3,7 @@ from numpy.lib.utils import source
 from torch.optim import optimizer
 import sys,os
 sys.path.append(os.path.abspath(__file__ + "/../../"))
-<<<<<<< HEAD
 os.chdir(os.path.abspath(__file__ + "/.."))
-=======
->>>>>>> 2738f905b07e16134098d0f918c2e78b3c8889b4
 from torchvision.datasets.folder import ImageFolder
 import torch
 import torch.nn as nn
@@ -23,11 +20,7 @@ from itertools import cycle
 np.random.seed(0)
 torch.manual_seed(0)
 
-<<<<<<< HEAD
 source_dir, target_dir = 'dataset/Office-31/images/amazon/', 'dataset/Office-31/images/webcam/'
-=======
-source_dir, target_dir = 'dsda/datasets/Office-31/images/amazon/', 'dsda/dataset/domain_adaptation/Office-31/images/webcam/'
->>>>>>> 2738f905b07e16134098d0f918c2e78b3c8889b4
 bottleneck_dim = 256
 lr = 0.001
 log_interval = 500
