@@ -157,4 +157,4 @@ for s1 in subsets[dataset_name]:
                 acc,_ = init_train_eval(dataset+s1, dataset+s2)
                 tmp_results.append(acc)
             results.append([s1,s2,np.mean(tmp_results),np.std(tmp_results)])
-            pd.DataFrame(results).to_csv(results_path,mode="a")
+            pd.DataFrame(r

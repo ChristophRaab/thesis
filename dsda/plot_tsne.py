@@ -224,7 +224,7 @@ if __name__ == '__main__':
                 domain_predictions = np.vstack([domain_predictions, d_pred.cpu().detach().numpy()]) if domain_predictions.size else d_pred.cpu().detach().numpy()
 
                 bottleneck_features = np.vstack([bottleneck_features, features.cpu().detach().numpy()]) if bottleneck_features.size else features.cpu().detach().numpy()
-               
+                plot_deep_view(inputs,truth_labels,classes,pretrained_model)
         # plot tsne
         source_size = len(np.array([[1]] * (config["data"]["source"]["batch_size"] *len(dset_loaders["source"]))))
         target_size = len(np.array([[0]] *(config["data"]["target"]["batch_size"] *  len(dset_loaders["target"]))))
