@@ -1,3 +1,2 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:407d693c1bb93fb2d92f423aa65ab3516a9c46d1fa9a321cb162618673d80d12
-size 78
+True Negative,False Positive,False Negative,True Positive
+799996,0,400004,0
