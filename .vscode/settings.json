@@ -1,0 +1,8 @@
+{
+    "python.languageServer": "Pylance",
+    "python.pythonPath": "/opt/homebrew/caskroom/miniconda/base/envs/thesis/bin/python",
+    "python.analysis.extraPaths": [
+        "/Users/christophraab/IONOS HiDrive/users/cdawg/Promotion/code/"
+    ],
+
+}
