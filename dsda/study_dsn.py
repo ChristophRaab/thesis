@@ -3,7 +3,10 @@ from numpy.lib.utils import source
 import sys,os
 from torch.optim import optimizer
 sys.path.append(os.path.abspath(__file__ + "/../../"))
+<<<<<<< HEAD
 os.chdir(os.path.abspath(__file__ + "/.."))
+=======
+>>>>>>> 2738f905b07e16134098d0f918c2e78b3c8889b4
 from torchvision.datasets.folder import ImageFolder
 import pandas as pd
 from datetime import datetime
@@ -157,4 +160,8 @@ for s1 in subsets[dataset_name]:
                 acc,_ = init_train_eval(dataset+s1, dataset+s2)
                 tmp_results.append(acc)
             results.append([s1,s2,np.mean(tmp_results),np.std(tmp_results)])
+<<<<<<< HEAD
             pd.DataFrame(r
+=======
+            pd.DataFrame(results).to_csv(results_path,mode="a")
+>>>>>>> 2738f905b07e16134098d0f918c2e78b3c8889b4

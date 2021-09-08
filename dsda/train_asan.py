@@ -6,7 +6,10 @@ import sys
 from torch.nn.functional import softmax
 import sys,os
 sys.path.append(os.path.abspath(__file__ + "/../../"))
+<<<<<<< HEAD:dsda/train_asan.py
 os.chdir(os.path.abspath(__file__ + "/.."))
+=======
+>>>>>>> 2738f905b07e16134098d0f918c2e78b3c8889b4:dsda/train_image.py
 import numpy as np
 import torch
 import torch.nn as nn
