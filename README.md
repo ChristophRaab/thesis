@@ -1,6 +1,8 @@
-# Dissertation Learning in Non-Stationary Environments
+# Dissertation Learning in Non-Stationary Environments - Code and Thesis
+<br />
+
 This repository contains the source code and the final pdf for the dissertation 'Learning in Non-Stationary Environments'.
-Standard language is python and mentioned otherwise.
+Standard language is python and mentioned otherwise. The files are usually self-explaining for example, demo or train algorithms, utils, plot methods etc.
 The folder structure roughly represents the chapters of the thesis:
 
     ├── sda                     # Code for chapter 3 & 4: Geometric and Subspace Domain Adaptation    
@@ -19,39 +21,40 @@ The folder structure roughly represents the chapters of the thesis:
     │   ├── demo.py             # Demo for Reactive Robust Soft Learning Vector Quantization (RRSLVQ)
     │   ├── study               # Folder of study scripts
     └── └── └── study_<type>.m  # Reproduces experiments of type <type>   
+    └── thesis_learning_in_non_stationary_enviroments.pdf       # Dissertation as Pdf  
 
-Remaining files are self-explaining algorithms, utils, plot methods etc.
+<br />
+<br />
 
 ## Installation
 Use the requirements.txt and pip_requirements.txt to install dependencies. 
 The recommended enviroment is conda in combindation with pip. 
 
 ```bash
+git clone https://github.com/ChristophRaab/thesis.git 
+cd thesis
 conda create -n thesis python=3.8
 conda activate thesis
 conda install --file requirements.txt
 pip install -r pip_requirements.txt # If conda requirements fail
 ```
+<br />
+
+## Execution
+All python scripts can be started from top-level directory or in the file directory. <br />
+All matlab scripts must be started in the file directory.
+<br />
+<br />
 
 ## Datasets
-All datasets are included except following requried for DSDA (chapter 5). 
-
-Otherwise they can be downloaded:
-### Office-31
-Office-31 dataset can be found [here](https://drive.google.com/file/d/11nywfWdfdBi92Lr3y4ga2Cu4_-FpWKUC/view?usp=sharing).
-
-### Office-Home
-Office-Home dataset can be found [here](https://drive.google.com/file/d/1W_U8GsILKdMSxqhnmTbYaaWhvQ-P4RJ1/view?usp=sharing).
-
-### Image-clef
-Image-Clef dataset can be found [here](https://drive.google.com/file/d/1lu1ouDoeucW8MgmaKVATwNt5JT7Uvk62/view?usp=sharing).
-
-To use the datasets change the paths accorindgly to your data destination in the files:  
+All datasets are included except following requried for reproducing the results in the appendix. 
+The Visda dataset can be found [here](https://paperswithcode.com/dataset/visda-2017).<br />
+To use the Visda datasets copy the extracted folders train, validation, test to:  
         
         ├── dsda                    # Code for chapter 4: Deep Spectral Domain Adaptation
-        │   ├── data                # Files with data paths required for ASAN code.
         │   ├── dataset             # Domain Adaptation dataset
 
 
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
+## Licenses
+Code [MIT](https://choosealicense.com/licenses/mit/)<br />
+Thesis [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)<br />
