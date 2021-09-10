@@ -2,13 +2,13 @@ clear all
 clc
 
 src = char("amazon");
-load(['../datasets/domain_adaptation/OfficeCaltech/features/surf/' src '_SURF_L10.mat']);
+load([oc_decaf_path src '_SURF_L10.mat']);
 Xs = double(zscore(fts, 1));
 Ys = labels;
 
 
 tgt = char("webcam");
-load(['../datasets/domain_adaptation/OfficeCaltech/features/surf/' tgt '_SURF_L10.mat']);
+load([oc_decaf_path tgt '_SURF_L10.mat']);
 Xt = double(zscore(fts, 1));
 Yt = labels;
 

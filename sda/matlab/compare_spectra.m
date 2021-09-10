@@ -5,7 +5,7 @@ src = char("amazon");
 tgt = char("webcam");
 data = strcat(src, '_vs_', tgt);
 fprintf('data=%s\n', data);
-load(['../datasets/domain_adaptation/OfficeCaltech/features/surf/' src '_SURF_L10.mat']);
+load([oc_decaf_path src '_SURF_L10.mat']);
 fts = fts ./ repmat(sum(fts, 2), 1, size(fts, 2));
 Xs = zscore(fts, 1);
 Ys = labels;
@@ -13,7 +13,7 @@ Ys = labels;
 figure;
 plot(svd(Xs));
 
-load(['../datasets/domain_adaptation/OfficeCaltech/features/surf/' tgt '_SURF_L10.mat']);
+load([oc_decaf_path tgt '_SURF_L10.mat']);
 fts = fts ./ repmat(sum(fts, 2), 1, size(fts,2));
 Xt = zscore(fts, 1);
 Yt = labels;
@@ -27,13 +27,13 @@ plot(svd(Xs))
 figure;
 plot(svd(Xt))
 
-load(['../datasets/domain_adaptation/Office-31/features/Decaf/' src '_decaf_fc8.mat']);
+load([oc_decaf_path src '_decaf_fc8.mat']);
 Xs = double(zscore(X, 1));
 Ys = double(Y)';
 figure;
 plot(svd(Xs));
 
-load(['../datasets/domain_adaptation/Office-31/features/Decaf/' tgt '_decaf_fc8.mat']);
+load([oc_decaf_path tgt '_decaf_fc8.mat']);
 Xt = double(zscore(X, 1));
 Yt = double(Y)';
 

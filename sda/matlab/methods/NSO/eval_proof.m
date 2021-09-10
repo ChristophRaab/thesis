@@ -10,13 +10,13 @@ for i=1:testsize
             tgt = char(tgtStr{iData});
             data = strcat(src, '_vs_', tgt);
             fprintf('data=%s\n', data);
-            load(['../datasets/domain_adaptation/OfficeCaltech/features/surf/' src '_SURF_L10.mat']);
+            load([oc_decaf_path src '_SURF_L10.mat']);
             Xs = fts ./ repmat(sum(fts,2),1,size(fts,2)); 
             Ys = labels;
             Xs = zscore(Xs);
 
 
-            load(['../datasets/domain_adaptation/OfficeCaltech/features/surf/' tgt '_SURF_L10.mat']);
+            load([oc_decaf_path tgt '_SURF_L10.mat']);
             Xt = fts ./ repmat(sum(fts,2),1,size(fts,2)); 
             Yt = labels;
             Xt = zscore(Xt);

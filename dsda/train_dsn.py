@@ -20,7 +20,7 @@ from itertools import cycle
 np.random.seed(0)
 torch.manual_seed(0)
 
-source_dir, target_dir = 'datasets/Office-31/images/amazon/', 'dataset/domain_adaptation/Office-31/images/webcam/'
+source_dir, target_dir = 'dataset/Office-31/images/amazon/', 'dataset/domain_adaptation/Office-31/images/webcam/'
 bottleneck_dim = 256
 lr = 0.001
 log_interval = 500
