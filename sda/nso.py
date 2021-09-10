@@ -1,6 +1,5 @@
 import numpy as np
 from sklearn import preprocessing
-
 from sklearn.neighbors import KNeighborsClassifier
 class NSO():
     """

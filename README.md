@@ -47,7 +47,7 @@ All matlab scripts must be started in the file directory.
 <br />
 
 ## Datasets
-All datasets are included except following requried for reproducing the results in the appendix. 
+All datasets are included except the Visda dataset required for reproducing the results in the appendix. 
 The Visda dataset can be found [here](https://paperswithcode.com/dataset/visda-2017).<br />
 To use the Visda datasets copy the extracted folders train, validation, test to:  
         
