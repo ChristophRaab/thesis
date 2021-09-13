@@ -1,35 +1,41 @@
-# Source Code for Chapter 5
+# Source Code for Chapter 3 & 4
+## Shallow Domain Adaptation  
 <br />
 
-## Deep Spectral Network (DSN)  
+Content: 
+
+    ├── sda                         # Code for chapter 3 & 4: Shallow Domain Adaptation.
+    │   ├── matlab                  # Matlab code for chapter 3 & 4: Preferable for reproducing results.
+    │   │   ├── study_all.m         # Reproduces all results in these chapters.
+    │   │   ├── study_<dataset>.m   # Reproduces results for specific <dataset>.
+    │   └── └── plots               # Folder containing all plot scripts.
+    │   ├── gda.py                  # Demo for Geometric Domain Adaptation (GDA).
+    │   ├── so.py                   # Demo for Subspace Override (SO).
+    └── └──nso.py                   # Demo for Nyström Subspace Override (NSO & cNSO).
+
+<br />
+
+### Demo
+For a demo on one preselected dataset execute:
+
 ```bash
-python train_dsn.py # Demo 
-python study_dsn.py # Reproduce thesis results 
+python gda.py                  # Demo for Geometric Domain Adaptation (GDA).
+python so.py                   # Demo for Subspace Override (SO).
+pythoon nso.py                  # Demo for Nyström Subspace Override (NSO & cNSO).
 ```
-To change parameters and datasets edit the scripts. 
+<br />
+
+### Study results on benchmarks
+For reproducing thesis results matlab is required:
+```bash
+# Most important for the thesis
+matlab study_all.m         # Reproduces all results in these chapters.
+matlab study_<dataset>.m   # Reproduces results for specific <dataset>.
+```
+All parameters are set. To change parameters and datasets edit the scripts.
 <br />
 <br />
-<br />
-
-
-## Adversarial Spectral Adaptation Networks (ASAN)
-All the parameters are set to optimal in our experiments. The following shows the command to run the demo on each task. The test_interval can be changed, which is the number of iterations between each test.
-
+To reproduce plots execute:
 ```bash
-#Office-31
-python train_asan.py --gpu_id id --net ResNet50 --dset office --test_interval 500 --s_dset_path data/office/amazon_list.txt --t_dset_path data/office/webcam_list.txt
+matlab plots/*.py # Select wished plots
 ```
-```bash
-#Office-Home
-python train_asan.py --gpu_id id --net ResNet50 --dset office-home --test_interval 2000 --s_dset_path data/office-home/Art.txt --t_dset_path data/office-home/Clipart.txt
-```
-```bash
-#Image-clef
-python train_asan.py --gpu_id id --net ResNet50 --dset image-clef --test_interval 500 --s_dset_path data/image-clef/b_list.txt --t_dset_path data/image-clef/i_list.txt
-```
-```bash
-#VisDA 2017
-python train_asan.py --gpu_id id --net ResNet50 --dset visda --test_interval 5000 --s_dset_path data/visda-2017/train_list.txt --t_dset_path data/visda-2017/validation_list.txt
-```
-
-To reproduce the results in the thesis change file from ```train_asan.py``` to ```study_asan.py```. Parameters are the same.
