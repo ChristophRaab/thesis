@@ -11,6 +11,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
+from torchvision.datasets import ImageFolder
 from dsda import network
 from dsda import loss
 from dsda import pre_process as prep 
@@ -79,24 +80,21 @@ def train(config):
     data_config = config["data"]
     train_bs = data_config["source"]["batch_size"]
     test_bs = data_config["test"]["batch_size"]
-    dsets["source"] = ImageList(open(data_config["source"]["list_path"]).readlines(), \
-                                transform=prep_dict["source"])
+    dsets["source"] = ImageFolder(data_config["source"]["list_path"],transform=prep_dict["source"])
     dset_loaders["source"] = DataLoader(dsets["source"], batch_size=train_bs, \
             shuffle=True, num_workers=config["num_loader"], drop_last=True)
-    dsets["target"] = ImageList(open(data_config["target"]["list_path"]).readlines(), \
-                                transform=prep_dict["target"])
+    dsets["target"] = ImageFolder(data_config["target"]["list_path"],transform=prep_dict["target"])
     dset_loaders["target"] = DataLoader(dsets["target"], batch_size=train_bs, \
             shuffle=True, num_workers=config["num_loader"], drop_last=True)
 
     if prep_config["test_10crop"]:
         for i in range(10):
-            dsets["test"] = [ImageList(open(data_config["test"]["list_path"]).readlines(), \
-                                transform=prep_dict["test"][i]) for i in range(10)]
+            dsets["test"] = [ImageFolder(data_config["target"]["list_path"],transform=prep_dict["test"][i]) \
+                                for i in range(10)]
             dset_loaders["test"] = [DataLoader(dset, batch_size=test_bs, \
                                 shuffle=False, num_workers=config["num_loader"]) for dset in dsets['test']]
     else:
-        dsets["test"] = ImageList(open(data_config["test"]["list_path"]).readlines(), \
-                                transform=prep_dict["test"])
+        dsets["test"] = ImageFolder(data_config["target"]["list_path"],transform=prep_dict["test"])
         dset_loaders["test"] = DataLoader(dsets["test"], batch_size=test_bs, \
                                 shuffle=False, num_workers=config["num_loader"])
 

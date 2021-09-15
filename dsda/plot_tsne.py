@@ -8,6 +8,7 @@ sys.path.append(os.path.abspath(__file__ + "/../../"))
 os.chdir(os.path.abspath(__file__ + "/.."))
 import torch
 from dsda.data_list import ImageList
+from torchvision.datasets import ImageFolder
 from torch.autograd import Variable
 from torchvision import models
 import matplotlib.pyplot as plt
@@ -187,14 +188,12 @@ if __name__ == '__main__':
         data_config = config["data"]
         train_bs = data_config["source"]["batch_size"]
         test_bs = data_config["test"]["batch_size"]
-        dsets["source"] = ImageList(open(data_config["source"]["list_path"]).readlines(), \
-                                    transform=prep_dict["source"])
+        dsets["source"] = ImageFolder(data_config["source"]["list_path"],transform=prep_dict["source"])
         dset_loaders["source"] = DataLoader(dsets["source"], batch_size=train_bs, \
-                shuffle=True, num_workers=4, drop_last=True)
-        dsets["target"] = ImageList(open(data_config["target"]["list_path"]).readlines(), \
-                                    transform=prep_dict["target"])
+                shuffle=True, num_workers=config["num_loader"], drop_last=True)
+        dsets["target"] = ImageFolder(data_config["target"]["list_path"],transform=prep_dict["target"])
         dset_loaders["target"] = DataLoader(dsets["target"], batch_size=train_bs, \
-                shuffle=True, num_workers=4, drop_last=True)
+                shuffle=True, num_workers=config["num_loader"], drop_last=True)
 
 
         # Set up iterators and load data
